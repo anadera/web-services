@@ -22,7 +22,7 @@ public class PostgreSQLDAO {
         List<Item> items = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()){
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from \"Items\"");
+            ResultSet rs = stmt.executeQuery("select * from items");
             while (rs.next()) {
                 Integer id = rs.getInt("id");
                 String name = rs.getString("name");
@@ -45,12 +45,12 @@ public class PostgreSQLDAO {
         if (!name.isEmpty()) query_where.add("name='" + name + "'");
         if (!barcode.isEmpty()) query_where.add("barcode='" + barcode + "'");
         if (!shop.isEmpty()) query_where.add("shop='" + shop + "'");
-        if (!weight.isEmpty()) query_where.add("weight=" + weight + "");
-        if (!price.isEmpty()) query_where.add("price=" + price + "");
+        if (!weight.isEmpty()) query_where.add("weight='" + weight + "'");
+        if (!price.isEmpty()) query_where.add("price='" + price + "'");
 
         String query = new String();
         if (query_where.size() > 0)
-            query = "select * from \"Items\" where " + query_where;
+            query = "select * from \"Items\" where " + join(query_where, " and ");
         List<Item> items = findItem(query);
         return items;
     }
@@ -77,4 +77,15 @@ public class PostgreSQLDAO {
         }
         return items;
     }
+    
+    public static String join(List<String> list, String delim) {
+        StringBuilder sb = new StringBuilder();
+        String loopDelim = "";
+        for(String s : list) {
+            sb.append(loopDelim);
+            sb.append(s);     
+            loopDelim = delim;
+        }
+        return sb.toString();
+        }
 }
