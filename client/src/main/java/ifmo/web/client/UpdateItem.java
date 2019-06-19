@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for findItem complex type.
+ * <p>Java class for updateItem complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="findItem">
+ * &lt;complexType name="updateItem">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -31,7 +31,7 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findItem", propOrder = {
+@XmlType(name = "updateItem", propOrder = {
     "arg0",
     "arg1",
     "arg2",
@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlType;
     "arg4",
     "arg5"
 })
-public class FindItem {
+public class UpdateItem {
 
     protected String arg0;
     protected String arg1;

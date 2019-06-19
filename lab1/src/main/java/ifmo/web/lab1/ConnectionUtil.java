@@ -1,5 +1,6 @@
 package ifmo.web.lab1;
 
+import java.util.List;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -28,5 +29,16 @@ public class ConnectionUtil {
             Logger.getLogger(ConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);
         }
         return connection;
+    }
+    
+    public static String join(List<String> list, String delim) {
+        StringBuilder sb = new StringBuilder();
+        String loopDelim = "";
+        for(String s : list) {
+            sb.append(loopDelim);
+            sb.append(s);     
+            loopDelim = delim;
+        }
+        return sb.toString();
     }
 }

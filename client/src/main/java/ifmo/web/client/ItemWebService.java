@@ -1,5 +1,5 @@
 
-package ifmo.web.client;
+package ifmo.web.lab1.client;
 
 import java.util.List;
 import javax.jws.WebMethod;
@@ -26,19 +26,30 @@ public interface ItemWebService {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<ifmo.web.lab1.client.Item>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getItems", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.GetItems")
+    @ResponseWrapper(localName = "getItemsResponse", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.GetItemsResponse")
+    public List<Item> getItems();
+
+    /**
+     * 
      * @param arg4
      * @param arg3
      * @param arg2
      * @param arg1
      * @param arg0
      * @return
-     *     returns java.util.List<ifmo.web.client.Item>
+     *     returns java.lang.Integer
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findItem", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.client.FindItem")
-    @ResponseWrapper(localName = "findItemResponse", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.client.FindItemResponse")
-    public List<Item> findItem(
+    @RequestWrapper(localName = "insertItem", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.InsertItem")
+    @ResponseWrapper(localName = "insertItemResponse", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.InsertItemResponse")
+    public Integer insertItem(
         @WebParam(name = "arg0", targetNamespace = "")
         String arg0,
         @WebParam(name = "arg1", targetNamespace = "")
@@ -52,13 +63,74 @@ public interface ItemWebService {
 
     /**
      * 
+     * @param arg5
+     * @param arg4
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
      * @return
-     *     returns java.util.List<ifmo.web.client.Item>
+     *     returns java.lang.String
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "getItems", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.client.GetItems")
-    @ResponseWrapper(localName = "getItemsResponse", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.client.GetItemsResponse")
-    public List<Item> getItems();
+    @RequestWrapper(localName = "updateItem", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.UpdateItem")
+    @ResponseWrapper(localName = "updateItemResponse", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.UpdateItemResponse")
+    public String updateItem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3,
+        @WebParam(name = "arg4", targetNamespace = "")
+        String arg4,
+        @WebParam(name = "arg5", targetNamespace = "")
+        String arg5);
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns java.lang.String
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "deleteItem", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.DeleteItem")
+    @ResponseWrapper(localName = "deleteItemResponse", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.DeleteItemResponse")
+    public String deleteItem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0);
+
+    /**
+     * 
+     * @param arg5
+     * @param arg4
+     * @param arg3
+     * @param arg2
+     * @param arg1
+     * @param arg0
+     * @return
+     *     returns java.util.List<ifmo.web.lab1.client.Item>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "findItem", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.FindItem")
+    @ResponseWrapper(localName = "findItemResponse", targetNamespace = "http://lab1.web.ifmo/", className = "ifmo.web.lab1.client.FindItemResponse")
+    public List<Item> findItem(
+        @WebParam(name = "arg0", targetNamespace = "")
+        String arg0,
+        @WebParam(name = "arg1", targetNamespace = "")
+        String arg1,
+        @WebParam(name = "arg2", targetNamespace = "")
+        String arg2,
+        @WebParam(name = "arg3", targetNamespace = "")
+        String arg3,
+        @WebParam(name = "arg4", targetNamespace = "")
+        String arg4,
+        @WebParam(name = "arg5", targetNamespace = "")
+        String arg5);
 
 }
