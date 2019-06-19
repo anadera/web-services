@@ -1,14 +1,8 @@
 package ifmo.web.lab1;
 
-import javax.annotation.Resource;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @WebService(serviceName = "ItemService")
 public class ItemWebService {
@@ -18,13 +12,14 @@ public class ItemWebService {
     @WebMethod(operationName = "getItems")
     public List<Item> getItems() {
         PostgreSQLDAO dao = new PostgreSQLDAO(); //); getConnection());
-        return dao.getItems();
+        List<Item> items = dao.getItems();
+        return items;
     }
 
     @WebMethod(operationName = "findItem")
-    public List<Item> findItem(String id, String name, String barcode, String shop, String weight, String price) {
+    public List<Item> findItem(String name, String barcode, String shop, String weight, String price) {
         PostgreSQLDAO dao = new PostgreSQLDAO(); //getConnection());
-        return dao.findItem(id, name, barcode, shop, weight, price);
+        return dao.findItem(name, barcode, shop, weight, price);
     }
 
 //    private Connection getConnection() {

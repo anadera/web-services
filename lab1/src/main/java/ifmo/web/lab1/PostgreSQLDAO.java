@@ -24,13 +24,13 @@ public class PostgreSQLDAO {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery("select * from items");
             while (rs.next()) {
-                Integer id = rs.getInt("id");
+                //Integer id = rs.getInt("id");
                 String name = rs.getString("name");
                 String barcode = rs.getString("barcode");
                 String shop = rs.getString("shop");
                 Double weight = rs.getDouble("weight");
                 Double price = rs.getDouble("price");
-                Item item = new Item(id, name, barcode, shop, weight, price);
+                Item item = new Item(name, barcode, shop, weight, price);
                 items.add(item);
             }
         } catch (SQLException ex) {
@@ -39,9 +39,9 @@ public class PostgreSQLDAO {
         return items;
     }
 
-    public List<Item> findItem(String id, String name, String barcode, String shop, String weight, String price) {
+    public List<Item> findItem( String name, String barcode, String shop, String weight, String price) {
         ArrayList<String> query_where = new ArrayList<String>();
-        if (!id.isEmpty()) query_where.add("id='" + id + "'");
+        //if (!id.isEmpty()) query_where.add("id='" + id + "'");
         if (!name.isEmpty()) query_where.add("name='" + name + "'");
         if (!barcode.isEmpty()) query_where.add("barcode='" + barcode + "'");
         if (!shop.isEmpty()) query_where.add("shop='" + shop + "'");
@@ -50,7 +50,7 @@ public class PostgreSQLDAO {
 
         String query = new String();
         if (query_where.size() > 0)
-            query = "select * from \"Items\" where " + join(query_where, " and ");
+            query = "select * from \"items\" where " + join(query_where, " and ");
         List<Item> items = findItem(query);
         return items;
     }
@@ -61,14 +61,14 @@ public class PostgreSQLDAO {
             Statement stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while (rs.next()) {
-                int id = rs.getInt("id");
+                //int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String barcode = rs.getString("barcode");
                 String shop = rs.getString("shop");
                 String weight = rs.getString("weight");
                 String price = rs.getString("price");
 
-                Item item = new Item(id, name, barcode, shop, Double.parseDouble(weight), Double.parseDouble(price));
+                Item item = new Item(name, barcode, shop, Double.parseDouble(weight), Double.parseDouble(price));
                 items.add(item);
                 System.out.println("get item");
             }
