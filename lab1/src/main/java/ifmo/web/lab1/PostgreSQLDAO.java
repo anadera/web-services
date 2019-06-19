@@ -28,8 +28,8 @@ public class PostgreSQLDAO {
                 String name = rs.getString("name");
                 String barcode = rs.getString("barcode");
                 String shop = rs.getString("shop");
-                Double weight = rs.getDouble("weight");
-                Double price = rs.getDouble("price");
+                String weight = rs.getString("weight");
+                String price = rs.getString("price");
                 Item item = new Item(name, barcode, shop, weight, price);
                 items.add(item);
             }
@@ -68,7 +68,7 @@ public class PostgreSQLDAO {
                 String weight = rs.getString("weight");
                 String price = rs.getString("price");
 
-                Item item = new Item(name, barcode, shop, Double.parseDouble(weight), Double.parseDouble(price));
+                Item item = new Item(name, barcode, shop, weight, price);
                 items.add(item);
                 System.out.println("get item");
             }
