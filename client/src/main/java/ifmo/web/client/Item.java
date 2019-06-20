@@ -1,5 +1,4 @@
-
-package ifmo.web.lab1.client;
+package ifmo.web.client;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

@@ -1,5 +1,4 @@
-
-package ifmo.web.lab1.client;
+package ifmo.web.client;
 
 import java.util.ArrayList;
 import java.util.List;

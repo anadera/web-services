@@ -132,7 +132,7 @@ public class WebServiceClient {
             }
         }
 
-        List<Item> Items = ItemService.getItemWebServicePort().findItem(name, barcode, shop, weight, price);
+        List<Item> Items = ItemService.getItemWebServicePort().findItem(id, name, barcode, shop, weight, price);
         printItems(Items);
     }
 

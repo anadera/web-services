@@ -1,5 +1,4 @@
-
-package ifmo.web.lab1.client;
+package ifmo.web.client;
 
 import java.net.MalformedURLException;
 import java.net.URL;
