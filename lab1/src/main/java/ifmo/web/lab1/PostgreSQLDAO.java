@@ -62,7 +62,7 @@ public class PostgreSQLDAO {
             values.add("?");
         }
 
-        String query = "INSERT INTO \"Items\"(" + ConnectionUtil.join(keys, ", ") + ") VALUES (" + ConnectionUtil.join(values, ", ") + ")";
+        String query = "INSERT INTO \"items\"(" + ConnectionUtil.join(keys, ", ") + ") VALUES (" + ConnectionUtil.join(values, ", ") + ")";
         System.out.println(query);
 
         Integer id = -1;
@@ -131,7 +131,7 @@ public class PostgreSQLDAO {
             keys.add("price=?");
         }
 
-        String query = "UPDATE \"Items\" SET " + ConnectionUtil.join(keys, ", ") + " WHERE id=?";
+        String query = "UPDATE \"items\" SET " + ConnectionUtil.join(keys, ", ") + " WHERE id=?";
         System.out.println(query);
 
         String status;
@@ -177,7 +177,7 @@ public class PostgreSQLDAO {
 
         String status;
         try (Connection connection = ConnectionUtil.getConnection()) {
-            PreparedStatement stmt = connection.prepareStatement("DELETE from \"Items\" where id=?");
+            PreparedStatement stmt = connection.prepareStatement("DELETE from \"items\" where id=?");
             stmt.setInt(1, Integer.parseInt(id));
             int count_row = stmt.executeUpdate();
             status = (count_row > 0) ? ("Deleted " + count_row + " row") : "No deleted row";
